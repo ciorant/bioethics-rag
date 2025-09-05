@@ -1,0 +1,9 @@
+streamlit
+openai
+langchain-openai
+langchain-core
+faiss-cpu
+PyMuPDF
+python-dotenv
+pathlib
+numpy

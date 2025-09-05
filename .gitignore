@@ -1,0 +1,35 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+*.egg
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+data/faiss_index/
+data/sample_papers/
+*.pdf
+*.csv
+*.json
+
+# --- Config / Secrets ---
+.env
+config.yaml
+
+# --- Logs ---
+*.log
+
+# --- Streamlit ---
+.streamlit/
+
