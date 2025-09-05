@@ -128,12 +128,16 @@ if question and st.session_state.query_count < 50:
         with debug_col:
             st.markdown("### 🔍 Debug Info")
 
-            # Show captured debug output
-            debug_output = stdout_capture.getvalue()
-            if debug_output:
+            # Show search results info
+            if 'bot' in st.session_state:
+                # Get search results for debug display
+                search_results = st.session_state.bot.vector_store.search(question, k=3)
                 with st.expander("📊 Search Results", expanded=True):
-                    st.markdown(f'<div class="debug-output">{debug_output}</div>',
-                                unsafe_allow_html=True)
+                    for i, r in enumerate(search_results):
+                        st.write(f"**Result {i + 1}** (Score: {r.get('similarity_score', 0):.3f})")
+                        st.write(f"Source: {r['metadata'].get('filename', 'Unknown')}")
+                        st.write(f"Preview: {r['content'][:200]}...")
+                        st.write("---")
 
             # Show response metadata
             st.metric("Response Time", f"{response_time:.2f}s")
